@@ -42,7 +42,7 @@ def get_unread_count():
     return atom['feed']['fullcount']
     
 def send_notification(unread_count):
-    if not unread_count:
+    if not int(unread_count):
         return
     image = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gmail.jpg')
     notify2.init(__file__)
