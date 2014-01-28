@@ -23,6 +23,8 @@ $NOTIFICATION_TITLES = [[0, "温馨提示"],
                         [259200, "郑重提醒"],
                         [604800, "严重警告"]]
 
+$ICON_PATH = ARGV[0].nil? ? "#{File.join(File.expand_path(File.dirname(__FILE__)), 'blacktocat.jpg')}" : ARGV[0]
+
 def parse_atom(url)
   regex = /<.*?>(.*)<\/.*>/m
   strip_tags = lambda do |str|
@@ -47,5 +49,5 @@ dd, hh = hh.divmod(24)
 title = $NOTIFICATION_TITLES.reverse.detect { |x, y| x < total_seconds}[1]
 Libnotify.show(:summary => title,
                :body => "你已经有 #{total_seconds} 秒没有写代码了！\n也就是： #{dd}天 #{hh}小时 #{mm}分钟 #{ss}秒！！！",
-               :icon_path => ARGV[0])
+               :icon_path => $ICON_PATH)
 
