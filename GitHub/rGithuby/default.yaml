@@ -1,0 +1,10 @@
+username: WhoYouAre 
+token: MagicNumbers
+exclude_repos:
+  - repo1
+  - repo2
+exclude_langs:
+  - lang1
+exclude_repo_langs:
+  - repo3:
+      - lang2

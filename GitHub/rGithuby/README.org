@@ -1,0 +1,9 @@
+* rGithuby
+** About
+rGithuby = Ruby + Github
+
+This is the first Ruby repo I have created. It consists of a collection of Ruby
+scripts parsing interesting information in Github. These scripts are very simple
+and stupid.
+
+Ruby is elegant, and Github is fantastic!

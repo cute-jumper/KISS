@@ -1,0 +1,5 @@
+* KISS
+KISS = Kiss: Insanely Simple/Stupid Scripts
+
+This repo is a collection of very simple yet useful scripts written by Junpeng
+Qiu.
