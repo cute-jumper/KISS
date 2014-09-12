@@ -27,9 +27,9 @@ def get_repo_list()
 end
 
 def reject_lang?(repo, lang)
-  $config['exclude_langs'].include? lang or
-    ($config['exclude_repo_langs'].has_key? repo and
-     $config['exclude_repo_langs'][repo].include? lang)
+  ($config['exclude_langs'].include? lang unless $config['exclude_langs'].nil?) or
+    (($config['exclude_repo_langs'].has_key? repo and
+     $config['exclude_repo_langs'][repo].include? lang) unless $config['exclude_repo_langs'].nil?)
 end
 
 def get_lang_stat(repos, debug=false)
