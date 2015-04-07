@@ -18,10 +18,12 @@ downloads = JSON.load(open($BASE_URL + 'download_counts.json'))
 my_packages = %w(gscholar-bibtex ace-flyspell ace-pinyin)
 my_packages.each do |pkg_name|
   d = downloads[pkg_name]
-  percent = package_names.select do |name|
+  below_number = package_names.select do |name|
     downloads[name] < d
-  end.length * 100.0 / package_names.length
-  puts "#{pkg_name}\n\tdownloads: #{d}, percentile: %.2f" % percent
+  end.length
+  percent = below_number * 100.0 / package_names.length
+  puts "#{pkg_name}\n\tdownloads: #{d}, rank: #{below_number + 1}, \
+percentile: %.2f" % percent
 end
 
 
