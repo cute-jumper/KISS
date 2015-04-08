@@ -15,7 +15,7 @@ puts "Total packages: #{package_names.length}"
 
 downloads = JSON.load(open($BASE_URL + 'download_counts.json'))
 
-my_packages = %w(gscholar-bibtex ace-flyspell ace-pinyin)
+my_packages = %w(gscholar-bibtex ace-flyspell ace-pinyin) + ARGV
 my_packages.each do |pkg_name|
   d = downloads[pkg_name]
   below_number = package_names.select do |name|
