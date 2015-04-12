@@ -11,7 +11,7 @@ $DATA_FILE = File.join File.dirname(__FILE__), 'data.json'
 
 old_data = File.exist?($DATA_FILE) ? JSON.load(open($DATA_FILE)) : nil
 package_names = JSON.load(open($BASE_URL + 'recipes.json')).keys &
-JSON.load(open($BASE_URL + 'archive.json')).keys
+                JSON.load(open($BASE_URL + 'archive.json')).keys
 
 puts "Total packages: #{package_names.length}"
 data = {"Total packages" => package_names.length}
@@ -26,8 +26,8 @@ my_packages.each do |pkg_name|
     downloads[name] < d
   end.length
   percent = below_number * 100.0 / package_names.length
-  if old_data
-    old_stats = old_data['my packages'][pkg_name]
+  old_stats = old_data['my packages'][pkg_name] if old_data['my packages']
+  if old_stats
     puts "#{pkg_name}\n\tdownloads: #{d}(#{old_stats['downloads']}), rank: #{below_number + 1}(#{old_stats['rank']}), \
 percentile: %.2f(#{old_stats['percentile']})" % percent
   else
@@ -35,7 +35,7 @@ percentile: %.2f(#{old_stats['percentile']})" % percent
 percentile: %.2f" % percent
   end
   data['my packages'][pkg_name] = { "downloads" => d,
-                                    "rank" => below_number + 1,                          
+                                    "rank" => below_number + 1,
                                     "percentile" => "%.2f" % percent}
 end
 open($DATA_FILE, 'w') do |f|
