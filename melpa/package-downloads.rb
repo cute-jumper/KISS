@@ -24,6 +24,9 @@ package_names &= downloads.keys
 
 my_packages = %w(gscholar-bibtex ace-flyspell ace-pinyin ace-jump-helm-line fcitx) + ARGV
 
+avg_downloads = 0
+avg_rank = 0
+
 my_packages.each do |pkg_name|
   d = downloads[pkg_name]
   next if d.nil?
@@ -42,7 +45,12 @@ percentile: %.2f" % percent
   data['my packages'][pkg_name] = { "downloads" => d,
                                     "rank" => below_number + 1,
                                     "percentile" => "%.2f" % percent}
+  avg_downloads += d
+  avg_rank += below_number + 1
 end
+puts '-' * 80
+puts "Average downloads: #{avg_downloads / my_packages.length}\n\
+Average rank: #{avg_rank / my_packages.length}"
 open($DATA_FILE, 'w') do |f|
   f.write(data.to_json)
 end
