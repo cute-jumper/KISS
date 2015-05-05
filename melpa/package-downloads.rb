@@ -22,7 +22,8 @@ downloads = JSON.load(open($BASE_URL + 'download_counts.json'))
 
 package_names &= downloads.keys
 
-my_packages = %w(gscholar-bibtex ace-flyspell ace-pinyin ace-jump-helm-line fcitx) + ARGV
+my_packages =
+  %w(gscholar-bibtex ace-flyspell ace-pinyin ace-jump-helm-line fcitx bing-dict) + ARGV
 
 avg_downloads = 0
 avg_rank = 0
