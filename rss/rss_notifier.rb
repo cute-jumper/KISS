@@ -9,9 +9,9 @@ require 'open-uri'
 require 'libnotify'
 require 'eventmachine'
 
-$RSS_URLS = %w(http://rss.cnbeta.com/rss)
+$RSS_URLS = %w(http://rss.cnbeta.com/rss https://news.ycombinator.com/rss)
 $INTERVAL = 60 * 30
-$TIMEOUT = 10
+$TIMEOUT = 15
 $ICON_PATH  = "#{File.join(File.expand_path(File.dirname(__FILE__)), 'rss_notifier_icon.png')}"
 
 $CACHE = $RSS_URLS.map { |e| [e,[]] }.to_h
@@ -29,7 +29,7 @@ def show_rss_titles
                      :icon_path => $ICON_PATH
                     ) unless notified_titles.empty?
     end
-    sleep $TIMEOUT
+    sleep $TIMEOUT + 1
   end
 end
 
