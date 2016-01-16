@@ -11,7 +11,7 @@ require 'eventmachine'
 
 $RSS_URLS = %w(http://rss.cnbeta.com/rss https://news.ycombinator.com/rss)
 $INTERVAL = 60 * 30
-$TIMEOUT = 15
+$TIMEOUT = 20
 $ICON_PATH  = "#{File.join(File.expand_path(File.dirname(__FILE__)), 'rss_notifier_icon.png')}"
 
 $CACHE = $RSS_URLS.map { |e| [e,[]] }.to_h
