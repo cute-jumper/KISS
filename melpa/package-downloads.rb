@@ -26,7 +26,7 @@ my_packages =
   %w(gscholar-bibtex ace-flyspell ace-pinyin ace-jump-helm-line fcitx bing-dict
 avy-zap company-qml gmpl-mode firefox-controller embrace evil-embrace
 evil-find-char-pinyin pinyinlib parsec org2elcomment org-table-sticky-header
-helm-ext) + ARGV
+helm-ext wotd) + ARGV
 
 avg_downloads = 0
 avg_rank = 0
